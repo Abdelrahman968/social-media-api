@@ -1,6 +1,5 @@
 import { app } from "./app/app.js";
-
-const PORT = 3000;
+import { PORT } from "./config/env.config.js";
 
 const startServer = async (): Promise<void> => {
   try {
