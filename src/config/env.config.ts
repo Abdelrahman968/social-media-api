@@ -40,6 +40,7 @@ const parsedEnv = envSchema.safeParse({
   PORT: process.env.PORT,
   TRUSTED_ORIGINS: process.env.TRUSTED_ORIGINS,
   JSON_PAYLOAD_LIMIT: process.env.JSON_PAYLOAD_LIMIT,
+  API_PREFIX: process.env.API_PREFIX,
 });
 
 if (!parsedEnv.success) {
@@ -49,5 +50,10 @@ if (!parsedEnv.success) {
   process.exit(1);
 }
 
-export const { NODE_ENV, PORT, TRUSTED_ORIGINS, JSON_PAYLOAD_LIMIT } =
-  parsedEnv.data;
+export const {
+  NODE_ENV,
+  PORT,
+  TRUSTED_ORIGINS,
+  JSON_PAYLOAD_LIMIT,
+  API_PREFIX,
+} = parsedEnv.data;
