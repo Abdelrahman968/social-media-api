@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { API_PREFIX } from "../../config/env.config.js";
+import { API_PREFIX } from "../../../config/env.config.js";
 
 export const notFoundMiddleware = (req: Request, res: Response) => {
   const body = {

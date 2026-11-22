@@ -1,11 +1,12 @@
-import  express  from 'express';
+import express from "express";
 import helmet from "helmet";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
 import { JSON_PAYLOAD_LIMIT, TRUSTED_ORIGINS } from "../config/env.config.js";
-import { responseFormatter } from "../middleware/response/response-formatter.middleware.js";
-import { notFoundMiddleware } from '../middleware/error/not-found.middleware.js';
+import { responseFormatter } from "./middleware/response/response-formatter.middleware.js";
+import { notFoundMiddleware } from "./middleware/error/not-found.middleware.js";
+import { AppError } from "./utils/app-error.util.js";
+import { errorHandlerMiddleware } from "./middleware/error/error-handler.middleware.js";
 
 export const app = express();
 
@@ -27,6 +28,7 @@ app.use(cookieParser());
 app.use(responseFormatter);
 
 app.get("/", (_req, res) => {
+  throw new AppError("User not found", 404, "Please try again later.");
   res.status(200).json({
     author: "Abdelrahman",
     message: "Social Media App API",
@@ -35,4 +37,5 @@ app.get("/", (_req, res) => {
   });
 });
 
+app.use(errorHandlerMiddleware);
 app.use(notFoundMiddleware);
