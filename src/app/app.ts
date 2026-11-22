@@ -28,7 +28,6 @@ app.use(cookieParser());
 app.use(responseFormatter);
 
 app.get("/", (_req, res) => {
-  throw new AppError("User not found", 404, "Please try again later.");
   res.status(200).json({
     author: "Abdelrahman",
     message: "Social Media App API",
