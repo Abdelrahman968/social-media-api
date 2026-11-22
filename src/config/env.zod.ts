@@ -29,4 +29,5 @@ export const envSchema = z.object({
     .pipe(z.array(z.string())),
 
   JSON_PAYLOAD_LIMIT: z.string().default("10kb"),
+  API_PREFIX: z.string().default("/api/v1"),
 });

@@ -8,6 +8,10 @@ export const responseFormatter = (
   const originalJson = res.json.bind(res);
 
   res.json = ((body: unknown) => {
+    if (res.statusCode >= 400) {
+      return originalJson(body);
+    }
+
     return originalJson({
       success: true,
       data: body,

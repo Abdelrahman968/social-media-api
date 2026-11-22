@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 
 import { JSON_PAYLOAD_LIMIT, TRUSTED_ORIGINS } from "../config/env.config.js";
 import { responseFormatter } from "../middleware/response/response-formatter.middleware.js";
+import { notFoundMiddleware } from '../middleware/error/not-found.middleware.js';
 
 export const app = express();
 
@@ -33,3 +34,5 @@ app.get("/", (_req, res) => {
     version: "0.1.0",
   });
 });
+
+app.use(notFoundMiddleware);
