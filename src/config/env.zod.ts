@@ -18,4 +18,15 @@ const portValidator = z.coerce
 export const envSchema = z.object({
   NODE_ENV: z.enum(["development", "production"]).default("development"),
   PORT: portValidator,
+  TRUSTED_ORIGINS: z
+    .string()
+    .transform((value) => {
+      return value
+        .split(",")
+        .map((origin) => origin.trim())
+        .filter(Boolean);
+    })
+    .pipe(z.array(z.string())),
+
+  JSON_PAYLOAD_LIMIT: z.string().default("10kb"),
 });
