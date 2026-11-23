@@ -1,6 +1,6 @@
+import { envSchema } from "@/config/env.zod.js";
 import { config } from "dotenv";
 import { resolve } from "node:path";
-import { envSchema } from "./env.zod.js";
 import { z } from "zod";
 
 enum Env {
@@ -41,6 +41,8 @@ const parsedEnv = envSchema.safeParse({
   TRUSTED_ORIGINS: process.env.TRUSTED_ORIGINS,
   JSON_PAYLOAD_LIMIT: process.env.JSON_PAYLOAD_LIMIT,
   API_PREFIX: process.env.API_PREFIX,
+  MONGO_URI: process.env.MONGO_URI,
+  MONGO_DB_NAME: process.env.MONGO_DB_NAME,
 });
 
 if (!parsedEnv.success) {
@@ -56,4 +58,6 @@ export const {
   TRUSTED_ORIGINS,
   JSON_PAYLOAD_LIMIT,
   API_PREFIX,
+  MONGO_URI,
+  MONGO_DB_NAME,
 } = parsedEnv.data;

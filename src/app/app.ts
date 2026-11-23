@@ -2,10 +2,10 @@ import express from "express";
 import helmet from "helmet";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { JSON_PAYLOAD_LIMIT, TRUSTED_ORIGINS } from "../config/env.config.js";
-import { responseFormatter } from "./middleware/response/response-formatter.middleware.js";
-import { notFoundMiddleware } from "./middleware/error/not-found.middleware.js";
-import { errorHandlerMiddleware } from "./middleware/error/error-handler.middleware.js";
+import { JSON_PAYLOAD_LIMIT, TRUSTED_ORIGINS } from "@/config/env.config.js";
+import { responseFormatter } from "@/app/middleware/response/response-formatter.middleware.js";
+import { errorHandlerMiddleware } from "@/app/middleware/error/error-handler.middleware.js";
+import { notFoundMiddleware } from "@/app/middleware/error/not-found.middleware.js";
 
 export const app = express();
 

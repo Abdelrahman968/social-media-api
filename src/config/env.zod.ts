@@ -30,4 +30,6 @@ export const envSchema = z.object({
 
   JSON_PAYLOAD_LIMIT: z.string().default("10kb"),
   API_PREFIX: z.string().default("/api/v1"),
+  MONGO_URI: z.url().default("mongodb://localhost:27017/"),
+  MONGO_DB_NAME: z.string().default("social-media-app-dev"),
 });

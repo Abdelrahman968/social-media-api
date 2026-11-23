@@ -1,5 +1,5 @@
+import { AppError } from "@/app/utils/app-error.util.js";
 import type { ErrorRequestHandler } from "express";
-import { AppError } from "../../utils/app-error.util.js";
 
 export const errorHandlerMiddleware: ErrorRequestHandler = (
   err,
