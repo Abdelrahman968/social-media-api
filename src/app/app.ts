@@ -1,13 +1,18 @@
-import express from "express";
+import express, { type Application } from "express";
 import helmet from "helmet";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { JSON_PAYLOAD_LIMIT, TRUSTED_ORIGINS } from "@/config/env.config.js";
+import {
+  API_PREFIX,
+  JSON_PAYLOAD_LIMIT,
+  TRUSTED_ORIGINS,
+} from "@/config/env.config.js";
 import { responseFormatter } from "@/app/middleware/response/response-formatter.middleware.js";
 import { errorHandlerMiddleware } from "@/app/middleware/error/error-handler.middleware.js";
 import { notFoundMiddleware } from "@/app/middleware/error/not-found.middleware.js";
+import moduleRoutes from "@/app/module/index.js";
 
-export const app = express();
+export const app: Application = express();
 
 app.disable("x-powered-by");
 
@@ -34,6 +39,8 @@ app.get("/", (_req, res) => {
     version: "0.1.0",
   });
 });
+
+app.use(API_PREFIX, moduleRoutes);
 
 app.use(errorHandlerMiddleware);
 app.use(notFoundMiddleware);
