@@ -27,7 +27,7 @@ export const userRegisterSchema = z.object({
         "Username can only contain letters, numbers, and underscores",
       ),
 
-    email: z.string().trim().email("Invalid email address").toLowerCase(),
+    email: z.email("Invalid email address").trim().toLowerCase(),
 
     password: z.string().min(8, "Password must be at least 8 characters"),
 
